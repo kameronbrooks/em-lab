@@ -1,0 +1,4 @@
+/* The hidden checkbox inside a toggle is absolutely positioned. Without a positioned parent it escapes
+   the side panel's scroll box and makes the whole page scroll when a toggle low in the panel is used.
+   (The same one-line fix belongs in src/styles.css.) */
+.toggle { position: relative; }

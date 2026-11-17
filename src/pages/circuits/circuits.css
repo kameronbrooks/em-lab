@@ -1,0 +1,43 @@
+.circuit-tools { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+.circuit-tools .btn { padding: 4px 9px; font-size: 12.5px; background: rgba(15, 21, 34, 0.9); }
+.circuit-tools .btn.on { background: var(--bg-4); border-color: var(--accent); color: #fff; }
+.circuit-tools .btn kbd { font: 10px var(--mono); color: var(--dim); margin-left: 2px; }
+.circuit-tools .sep { width: 1px; align-self: stretch; background: var(--line-2); margin: 2px 3px; }
+.circuit-tools svg { display: block; }
+
+.scope-row { display: grid; grid-template-columns: repeat(3, 1fr); }
+.scope-row > * + * { border-left: 1px solid var(--line); }
+.scope-cell { position: relative; height: 172px; min-width: 0; }
+.scope-cell .lab-canvas { position: absolute; inset: 0; }
+.scope-head {
+  display: flex; align-items: center; gap: 10px; padding: 4px 10px; font-size: 12px; color: var(--dim);
+  border-bottom: 1px solid var(--line);
+}
+.scope-head b { color: var(--text); font-weight: 600; }
+.scope-head .spacer { flex: 1; }
+.scope-head .segmented { margin: 0; }
+.scope-head .segmented button { padding: 2px 8px; font-size: 11.5px; }
+.scope-dash { display: inline-block; width: 18px; border-top: 2px dashed #fff; vertical-align: middle; margin-right: 5px; opacity: 0.85; }
+
+.sheet-box { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; margin-bottom: 10px; }
+.sheet-box .tex-block { padding: 2px 0; }
+.sheet-box p { color: var(--text-2); font-size: 12.5px; margin: 4px 0 2px; }
+.sheet-kind { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; font-size: 13px; color: var(--text); }
+.badge { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 11.5px; border: 1px solid var(--line-2); color: var(--text-2); }
+.badge.under { color: var(--c-B); border-color: rgba(47, 224, 196, 0.45); }
+.badge.critical { color: var(--good); border-color: rgba(91, 227, 154, 0.5); }
+.badge.over { color: var(--warn); border-color: rgba(255, 179, 71, 0.5); }
+.badge.undamped { color: var(--c-V); border-color: rgba(180, 140, 255, 0.5); }
+
+.res-plot { position: relative; height: 170px; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin-bottom: 10px; }
+.res-plot .lab-canvas { position: absolute; inset: 0; }
+.crit-scale { position: relative; height: 16px; margin: -4px 0 8px; font-size: 11px; color: var(--dim); }
+.crit-scale span { position: absolute; transform: translateX(-50%); white-space: nowrap; }
+.crit-scale i { position: absolute; top: -6px; width: 1px; height: 6px; background: var(--good); }
+
+.scope-row.n1 { grid-template-columns: 1fr; }
+.scope-row.n2 { grid-template-columns: 1fr 1fr; }
+@media (max-width: 860px) {
+  .scope-row, .scope-row.n2 { grid-template-columns: 1fr; }
+  .scope-row > * + * { border-left: 0; border-top: 1px solid var(--line); }
+}

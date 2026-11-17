@@ -1,0 +1,108 @@
+/* Solver + formula sheet. Shared pieces (math field, badges, calc messages) are also used by Practice. */
+
+.mathfield math-field {
+  display: block;
+  width: 100%;
+  font-size: 22px;
+  padding: 10px 12px;
+  border-radius: 9px;
+  border: 1px solid var(--line-2);
+  background: var(--bg);
+  color: var(--text);
+  --caret-color: var(--accent-2);
+  --selection-background-color: rgba(106, 165, 255, 0.35);
+  --selection-color: #fff;
+  --contains-highlight-background-color: rgba(106, 165, 255, 0.1);
+  --placeholder-color: var(--dim);
+  --smart-fence-color: var(--dim);
+  --latex-color: var(--accent-2);
+  --text-highlight-background-color: rgba(106, 165, 255, 0.2);
+  min-height: 52px;
+}
+.mathfield math-field:focus-within { outline: 2px solid var(--accent); outline-offset: -1px; }
+.mathfield math-field::part(virtual-keyboard-toggle),
+.mathfield math-field::part(menu-toggle) { color: var(--dim); }
+.mathfield math-field::part(virtual-keyboard-toggle):hover,
+.mathfield math-field::part(menu-toggle):hover { color: var(--text); background: var(--bg-3); }
+
+.badge {
+  display: inline-block; font-size: 11px; padding: 1px 7px; border-radius: 999px; border: 1px solid var(--line-2);
+  color: var(--text-2); background: var(--bg-3); vertical-align: 1px; white-space: nowrap;
+}
+.badge.good { color: var(--good); border-color: rgba(91, 227, 154, 0.4); background: rgba(91, 227, 154, 0.08); }
+.badge.warn { color: var(--warn); border-color: rgba(255, 179, 71, 0.4); background: rgba(255, 179, 71, 0.08); }
+
+.calc-msg { font-size: 13px; color: var(--text-2); margin: 8px 0; }
+.calc-msg.warn { color: var(--warn); }
+.calc-msg.good { color: var(--good); }
+.fineprint { font-size: 12px; color: var(--dim); margin: 8px 0 0; }
+
+.solver h1 + .page-lead { margin-bottom: 14px; }
+.solver-input { margin-bottom: 14px; }
+.examples { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: 10px; font-size: 12.5px; }
+.examples .chip { cursor: pointer; font-family: var(--font); }
+.read-as { display: flex; gap: 10px; align-items: baseline; margin-top: 10px; overflow-x: auto; padding-bottom: 2px; }
+.read-as .muted { font-size: 12px; white-space: nowrap; }
+
+.result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 12px; align-items: start; }
+.result h3 { font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--dim); margin-bottom: 8px; }
+.result .tex-block { font-size: 1.08em; }
+.alt-form { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--line-2); }
+.alt-form .muted { font-size: 12px; }
+
+.var-inputs { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; margin-bottom: 10px; }
+.var-input { display: flex; align-items: center; gap: 6px; }
+.var-input span { white-space: nowrap; }
+.var-input input { width: 100%; min-width: 0; font-family: var(--mono); font-size: 13px; }
+.value-line { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; margin: 4px 0; }
+.value-line.big { font-size: 1.25em; }
+
+.var-picker { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
+.var-picker button {
+  border: 1px solid var(--line-2); background: var(--bg); color: var(--text-2); border-radius: 7px; padding: 3px 10px; cursor: pointer; min-width: 34px;
+}
+.var-picker button:hover { background: var(--bg-3); color: var(--text); }
+.var-picker button.on { background: var(--bg-4); border-color: var(--accent); color: #fff; }
+.solution { margin: 2px 0 6px; overflow-x: auto; }
+.limits { display: flex; gap: 14px; margin-bottom: 8px; color: var(--text-2); font-size: 13px; }
+.limits input { width: 84px; margin-left: 6px; font-family: var(--mono); font-size: 13px; }
+
+.sheet-title { font-size: 20px; margin: 34px 0 6px; }
+.formula-group { margin-top: 22px; }
+.formula-group > h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.09em; color: var(--dim); margin-bottom: 10px; }
+.formula-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; align-items: start; }
+.formula-card { background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.formula-card.open { border-color: var(--accent); grid-column: 1 / -1; }
+.formula-head {
+  display: flex; flex-direction: column; gap: 2px; width: 100%; text-align: left; background: none; border: 0; padding: 12px 14px; cursor: pointer; color: var(--text);
+}
+.formula-head:hover { background: var(--bg-3); }
+.formula-name { font-size: 12px; color: var(--dim); text-transform: uppercase; letter-spacing: 0.06em; }
+.formula-head .tex-block { font-size: 1.1em; padding: 6px 0; }
+.formula-meaning { font-size: 13px; color: var(--text-2); }
+.formula-toggle { font-size: 12px; color: var(--accent-2); margin-top: 6px; }
+.formula-body { padding: 4px 14px 14px; border-top: 1px solid var(--line); display: grid; grid-template-columns: minmax(240px, 1fr) minmax(300px, 1.4fr); gap: 18px; }
+.formula-vars { border-collapse: collapse; font-size: 13px; align-self: start; margin-top: 10px; }
+.formula-vars td { padding: 4px 10px 4px 0; vertical-align: baseline; color: var(--text-2); border-bottom: 1px dashed rgba(47, 61, 92, 0.5); }
+.formula-vars td:first-child { white-space: nowrap; color: var(--text); }
+.formula-vars td:last-child { white-space: nowrap; font-size: 12px; }
+
+.calc { margin-top: 8px; min-width: 0; }
+.calc-forms { margin-bottom: 6px; }
+.calc-note { font-size: 12.5px; color: var(--dim); margin: 0 0 8px; }
+.calc-fields { display: grid; gap: 6px; margin: 8px 0 10px; }
+.calc-field { display: grid; grid-template-columns: 44px 130px 86px 1fr; gap: 8px; align-items: center; font-size: 13px; }
+.calc-field input { width: 100%; min-width: 0; font-family: var(--mono); font-size: 13px; }
+.calc-field.unknown input { border-style: dashed; border-color: var(--accent); }
+.calc-sym { text-align: right; }
+.calc-unit { color: var(--dim); font-size: 12px; }
+.calc-meaning { color: var(--dim); font-size: 12px; }
+.calc-result { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 6px 12px 10px; margin-bottom: 10px; overflow-x: auto; }
+.calc-value { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; font-size: 1.2em; }
+.calc-value .calc-unit { font-size: 13px; }
+
+@media (max-width: 760px) {
+  .formula-body { grid-template-columns: 1fr; }
+  .calc-field { grid-template-columns: 40px 1fr 70px; }
+  .calc-meaning { grid-column: 1 / -1; padding-left: 48px; }
+}

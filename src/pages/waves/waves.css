@@ -1,0 +1,8 @@
+/* Styles local to the wave labs. */
+.wave-plot { height: 180px; }
+.wave-steps { margin: 0 0 10px; padding-left: 20px; color: var(--text-2); font-size: 13px; }
+.wave-steps li { margin-bottom: 6px; }
+.wave-steps b { color: var(--text); }
+.wave-given { display: grid; grid-template-columns: 1fr 1fr; gap: 0 10px; }
+.wave-verdict { display: grid; gap: 6px; margin-bottom: 10px; }
+.wave-verdict .bar { grid-template-columns: 112px 1fr 48px; }

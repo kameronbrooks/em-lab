@@ -1,0 +1,83 @@
+/* Practice problems. Shares the math field, badges and messages from solver.css. */
+
+.practice h3 { font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--dim); margin-bottom: 8px; }
+.practice h4 { font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--dim); margin: 0 0 4px; }
+
+.progress-box { margin-bottom: 16px; }
+.progress-top { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; }
+.progress-top .btn-row { margin: 0; }
+.progress-track { display: flex; height: 8px; border-radius: 5px; background: var(--bg); border: 1px solid var(--line); overflow: hidden; margin-top: 10px; }
+.progress-solved { background: var(--good); }
+.progress-review { background: var(--warn); }
+
+.filters { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.topic-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.practice .chip { cursor: pointer; font-family: var(--font); gap: 6px; }
+.practice .chip.on { background: var(--bg-4); border-color: var(--accent); color: #fff; }
+.practice .chip .count { color: var(--dim); font-family: var(--mono); font-size: 11px; }
+.status-filter { margin: 0; }
+.empty { padding: 24px 0; }
+
+.problem-list { list-style: none; margin: 0; padding: 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--bg-2); }
+.problem-list li + li { border-top: 1px solid var(--line); }
+.problem-row {
+  display: grid; grid-template-columns: 38px 1fr 170px 70px 70px; gap: 10px; align-items: center; padding: 9px 14px; color: var(--text);
+}
+.problem-row:hover { background: var(--bg-3); text-decoration: none; }
+.problem-row.solved .problem-title { color: var(--text-2); }
+.problem-n { font-family: var(--mono); color: var(--dim); text-align: right; font-size: 13px; }
+.problem-topic { font-size: 12px; color: var(--text-2); }
+.problem-kind { font-size: 11.5px; color: var(--dim); }
+.problem-row .badge { justify-self: end; }
+
+.problem-nav { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 14px; }
+.problem-nav .spacer { flex: 1; }
+.problem-nav a.btn:hover { text-decoration: none; }
+.problem-head { display: flex; flex-wrap: wrap; gap: 12px; align-items: baseline; }
+.problem-head h1 { margin: 0; }
+.problem-subtitle { color: var(--text-2); margin: 2px 0 14px; }
+.statement { font-size: 16px; line-height: 1.65; margin-bottom: 12px; border-left: 3px solid var(--accent); }
+
+.answer-box { margin-bottom: 12px; }
+.check + .check { margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--line-2); }
+.check-prompt { color: var(--text-2); margin-bottom: 6px; }
+.check-label { display: inline-block; font-weight: 650; color: var(--text); margin-right: 8px; }
+.check-row { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: stretch; }
+.check-row .btn { padding: 0 18px; }
+.verdict { margin: 8px 0 0; font-size: 13.5px; }
+.verdict.good { color: var(--good); }
+.verdict.bad { color: var(--warn); }
+.verdict.big { font-size: 15px; font-weight: 600; margin-top: 12px; }
+.answer-box .link-btn { margin-top: 12px; color: var(--dim); }
+.answer-box .link-btn:hover { color: var(--accent-2); }
+
+.revealed { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); }
+.answer-text { font-size: 15.5px; line-height: 1.9; }
+.sheet-answer { font-size: 13.5px; color: var(--text-2); }
+.revealed .note { margin-top: 8px; }
+.self-mark { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 10px; color: var(--text-2); }
+.self-mark .btn.on { border-color: var(--accent); }
+
+.help-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; align-items: start; }
+.hints { margin: 0 0 10px; padding-left: 20px; display: grid; gap: 8px; color: var(--text-2); }
+.hints:empty { display: none; }
+.lab-link { margin-bottom: 10px; }
+.lab-link:hover { text-decoration: none; }
+
+.solution-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.solution-head h3 { margin: 0; }
+.steps { margin: 14px 0 6px; padding-left: 22px; display: grid; gap: 12px; line-height: 1.75; }
+.steps li::marker { color: var(--dim); font-family: var(--mono); font-size: 12px; }
+.uses { margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--line-2); }
+.uses .muted { font-size: 12px; }
+.uses-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+.use { padding: 4px 12px; border-radius: 8px; border: 1px solid var(--line-2); background: var(--bg); color: var(--text); font-size: 13px; }
+.use:hover { border-color: var(--accent); text-decoration: none; }
+
+@media (max-width: 760px) {
+  .problem-row { grid-template-columns: 30px 1fr auto; }
+  .problem-topic, .problem-kind { display: none; }
+  .help-grid { grid-template-columns: 1fr; }
+  .check-row { grid-template-columns: 1fr; }
+  .check-row .btn { padding: 8px 18px; justify-self: start; }
+}
