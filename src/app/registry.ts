@@ -14,6 +14,8 @@ export interface PageDef {
   component: React.LazyExoticComponent<React.ComponentType>;
 }
 
+const LC_PROBLEMS = [45, 51, 52, 53, 54];
+
 export const PAGES: PageDef[] = [
   {
     path: '/fields/charges',
@@ -84,8 +86,18 @@ export const PAGES: PageDef[] = [
     group: 'Circuits',
     blurb: 'Build RC, RL, LC and RLC circuits, run them, and compare with the formula sheet.',
     videos: range(51, 76),
-    problems: range(41, 62),
+    // the LC energy problems (45, 51–54) belong to the LC page below
+    problems: range(41, 62).filter((n) => !LC_PROBLEMS.includes(n)),
     component: lazy(() => import('../pages/circuits/CircuitsPage')),
+  },
+  {
+    path: '/circuits/lc',
+    title: 'LC: charge & current',
+    group: 'Circuits',
+    blurb: 'Get the charge from the current, or the current from the charge, by sharing out the energy.',
+    videos: range(59, 69),
+    problems: LC_PROBLEMS,
+    component: lazy(() => import('../pages/circuits/LCPage')),
   },
   {
     path: '/waves/1d',
@@ -137,7 +149,8 @@ export const PAGES: PageDef[] = [
 export const GROUPS: PageDef['group'][] = ['Fields', 'Circuits', 'Waves', 'Tools'];
 
 export function findPage(path: string): PageDef | undefined {
-  return PAGES.find((p) => path === p.path || path.startsWith(p.path + '/'));
+  // the longest matching path wins, so /circuits/lc is not swallowed by /circuits
+  return PAGES.filter((p) => path === p.path || path.startsWith(p.path + '/')).sort((a, b) => b.path.length - a.path.length)[0];
 }
 
 /** The lab page that best matches a problem number (for "open in lab" links). */
